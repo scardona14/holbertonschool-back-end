@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/python3
 """
 Given a specific API, returns information about the user's TODO list progress
 """

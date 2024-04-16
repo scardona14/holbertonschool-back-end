@@ -16,6 +16,7 @@ if __name__ == "__main__":
     with open("todo_all_employees.json", "w") as jsonfile:
         json.dump({user.get("id"): [{"task": todo.get("title"),
                                      "completed": todo.get("completed"),
-                                     "username": user.get("username")} for todo in todos
+                                     "username": user.get("username")}
+                                    for todo in todos
                                     if user.get("id") == todo.get("userId")]
                   for user in users}, jsonfile)

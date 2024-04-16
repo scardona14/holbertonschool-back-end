@@ -26,12 +26,15 @@ def get_todo_list_progress(user_id):
     completed = [todo for todo in todos if todo.get("completed")]
 
     # Print user's progress
-todo_response = requests.get(todo_url)  # Define the variable 'todo_response'
-todos = todo_response.json()  # Define the variable 'todos'
+
+
+todo_response = requests.get(todo_url)
+
+todos = todo_response.json()
 
 completed = [todo for todo in todos if todo.get("completed")]
 
-print(f"Employee {user['name']} is done with tasks({len(completed)}/{len(todos)}):")
+print(f"Employee {user['name']}done with task({len(completed)}/{len(todos)}):")
 for todo in completed:
     print("\t {}".format(todo.get("title")))
 

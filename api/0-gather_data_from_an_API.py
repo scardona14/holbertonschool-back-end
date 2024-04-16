@@ -6,15 +6,21 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/users/{}".format(argv[1])
+    url = "https://jsonplaceholder.typicode.com/users"
     response = requests.get(url)
-    user = response.json()
-    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format
-    (argv[1])
+    users = response.json()
+    url = "https://jsonplaceholder.typicode.com/todos"
     response = requests.get(url)
     todos = response.json()
-    completed = [todo for todo in todos if todo.get("completed") is True]
-    print("Employee {} is done with tasks({}/{}):".format(user.get("name"),
-                                                          len(completed),
-                                                          len(todos)))
-    [print("\t {}".format(todo.get("title"))) for todo in completed]
+    todo_all_employees = {}
+    for user in users:
+        user_id = user.get("id")
+        username = user.get("username")
+        todo_all_employees[user_id] = []
+        for todo in todos:
+            if user_id == todo.get("userId"):
+                todo_all_employees[user_id].append({
+                    "task": todo.get("title"),
+                    "completed": todo.get("completed"),
+                    "username": username
+                })

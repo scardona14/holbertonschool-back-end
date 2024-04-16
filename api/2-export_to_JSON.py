@@ -2,9 +2,9 @@
 """
 Given a specific API, returns information about the user's TODO list progress
 """
+import json
 import requests
 from sys import argv
-import json
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/users/{}".format(argv[1])
